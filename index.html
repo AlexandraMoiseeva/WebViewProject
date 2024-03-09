@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8" />
+    <title>ECharts</title>
+    <!-- Include the ECharts file you just downloaded -->
+    <script src="echarts.js"></script>
+  </head>
+  <body>
+<!-- CSS часть -->
+<style>
+  .tabs_item {
+    display: none;
+  }
+
+  .tabs_item:target {
+    display: block;
+  }
+.tabs_nav: {
+    display: flex;
+  }
+.tabs_content: {
+    display: flex;
+  }
+</style>
+	<!-- Кнопка для увеличения вкладок --> 
+	<button onclick = "addTab()"> Add Tab </button>
+	<!-- Блок для вкладок -->
+	<div class = "tabs">
+		<div class = "tabs_nav" id = "tabs_nav">
+
+		</div>
+		<div class = "tabs_content" id = "tabs_content">
+
+		</div>
+	</div>
+	<script type="text/javascript">
+	<!-- Количество вкладок -->
+	let tabCount = 0;
+	<!-- Нажатие на одну из вкладок -->
+	function visibleContent(clickedButton)
+	{
+		<!-- Все содержимое вкладок-->
+		let tabContents = document.querySelectorAll('.tabs_item');
+		<!-- Закрываем все содержимое вкладок -->
+		tabContents.forEach(function(content)
+		{
+			content.style.display = "none";
+		});
+		<!-- Открываем содержимое при нажатой вкладке -->
+		document.getElementById(clickedButton.id + 'content').style.display = "block";
+		
+	}
+	<!-- Создание новой вкладки -->
+	function addTab()
+	{
+		<!-- Увеличиваем количество -->
+		tabCount++
+		<!-- Создаем соответствующую кнопку -->
+		let newTab = document.createElement('button');
+		newTab.className = 'tabs_button';
+		newTab.id = 'tab' + tabCount;
+		newTab.onclick = function() { visibleContent(this); };
+		newTab.innerHTML = 'tab' + tabCount;
+		document.getElementById('tabs_nav').appendChild(newTab);
+		<!-- Создаем содержимое вкладки -->
+		let newTabContent = document.createElement('div');
+		newTabContent.className = "tabs_item";
+		newTabContent.id = 'tab' + tabCount + 'content';
+		newTabContent.innerHTML = 'tab' + tabCount;
+		<!-- Поле загрузки файла -->
+		let newInputFile = document.createElement('input');
+		newInputFile.type = "file";
+		newInputFile.class = "fileInput";
+		<!-- Область для графика -->
+		let newScreen = document.createElement('div');
+		newScreen.id = "main";
+		newScreen.style = "width: 960px;height: 540px;";
+		<!-- Реакция на зарузку/смену файла -->
+		newInputFile.addEventListener('change', function(e) 
+		{
+			<!-- Массив словарей из колон в нужно формате для отображения -->
+			var all_column = [];
+			<!-- Проверка наличия файла -->
+			var file = e.target.files[0];
+			if (!file) 
+			{
+        	        	return;
+			}
+			<!-- Чтение файла -->
+			var reader = new FileReader();
+			reader.onload = function(e) 
+			{
+				<!-- Все содержимое -->
+             	   		var contents = e.target.result;
+				<!-- По строкам -->
+            	    		var lines = contents.split(';\r\n');
+				<!-- Первая строка поэлементно -->
+				var title_line = lines[0].split(';');
+				<!-- Заполняем all_column пустыми словарями с именем стобца -->
+				for (var i=0; i<title_line.length; i++)
+				{
+					if (i == 0)
+					{ 
+						all_column.push(
+						{
+    							name: title_line[i],
+            		
+            						data: []
+        					});
+					}
+					else
+					{
+						all_column.push(
+						{
+    
+            						name: title_line[i],
+            						type: 'line',
+            						data: []
+        					});
+					}
+				}
+				<!-- Убираем строку с названиями столбцов -->
+				lines = lines.slice(1);
+				<!-- Заполняем all_column построчно-->
+                		lines.forEach(function(line)
+				{
+                			var columns = line.split(';');
+					for (var i=0; i<title_line.length; i++)
+					{
+						if (i == 0)
+						{ 
+							all_column[i]['data'].push(columns[i]);
+						}
+						else
+						{
+							all_column[i]['data'].push(parseFloat(columns[i]));
+						}
+					}
+				});
+				<!-- Прикрепляем график к соответствующей области -->
+				var myChart = echarts.init(newScreen);
+				<!-- Характеристики графика -->
+      				var option = 
+				{
+					legend: {data: title_line},
+        				xAxis: all_column[0],
+       					yAxis: {type: 'value'},
+        				series: all_column.slice(1)
+				};
+
+				myChart.setOption(option);
+
+            		};
+			reader.readAsText(file);
+        	});
+		<!-- Записываем содержимое вкладок в соответствующий блок  -->
+		newTabContent.appendChild(newInputFile);
+		newTabContent.appendChild(newScreen);
+		document.getElementById('tabs_content').appendChild(newTabContent);
+	}
+    </script>
+  </body>
+</html>
