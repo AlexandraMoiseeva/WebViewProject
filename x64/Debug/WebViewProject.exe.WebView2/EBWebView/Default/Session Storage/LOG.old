@@ -1,2 +1,3 @@
-2024/03/09-18:38:02.337 388c Creating DB D:\VS\WebViewProject\x64\Debug\WebViewProject.exe.WebView2\EBWebView\Default\Session Storage since it was missing.
-2024/03/09-18:38:03.021 388c Reusing MANIFEST D:\VS\WebViewProject\x64\Debug\WebViewProject.exe.WebView2\EBWebView\Default\Session Storage/MANIFEST-000001
+2024/03/09-19:25:44.748 46c8 Reusing MANIFEST D:\VS\WebViewProject\x64\Debug\WebViewProject.exe.WebView2\EBWebView\Default\Session Storage/MANIFEST-000001
+2024/03/09-19:25:44.751 46c8 Recovering log #3
+2024/03/09-19:25:44.760 46c8 Reusing old log D:\VS\WebViewProject\x64\Debug\WebViewProject.exe.WebView2\EBWebView\Default\Session Storage/000003.log 

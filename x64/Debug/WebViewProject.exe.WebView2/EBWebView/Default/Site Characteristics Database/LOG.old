@@ -1,2 +1,3 @@
-2024/03/09-18:38:00.841 4d04 Creating DB D:\VS\WebViewProject\x64\Debug\WebViewProject.exe.WebView2\EBWebView\Default\Site Characteristics Database since it was missing.
-2024/03/09-18:38:01.187 4d04 Reusing MANIFEST D:\VS\WebViewProject\x64\Debug\WebViewProject.exe.WebView2\EBWebView\Default\Site Characteristics Database/MANIFEST-000001
+2024/03/09-19:25:34.881 6f68 Reusing MANIFEST D:\VS\WebViewProject\x64\Debug\WebViewProject.exe.WebView2\EBWebView\Default\Site Characteristics Database/MANIFEST-000001
+2024/03/09-19:25:34.882 6f68 Recovering log #3
+2024/03/09-19:25:34.882 6f68 Reusing old log D:\VS\WebViewProject\x64\Debug\WebViewProject.exe.WebView2\EBWebView\Default\Site Characteristics Database/000003.log 

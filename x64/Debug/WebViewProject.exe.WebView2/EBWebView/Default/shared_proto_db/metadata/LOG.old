@@ -1,2 +1,3 @@
-2024/03/09-18:38:00.887 6904 Creating DB D:\VS\WebViewProject\x64\Debug\WebViewProject.exe.WebView2\EBWebView\Default\shared_proto_db\metadata since it was missing.
-2024/03/09-18:38:01.088 6904 Reusing MANIFEST D:\VS\WebViewProject\x64\Debug\WebViewProject.exe.WebView2\EBWebView\Default\shared_proto_db\metadata/MANIFEST-000001
+2024/03/09-19:25:34.911 31c8 Reusing MANIFEST D:\VS\WebViewProject\x64\Debug\WebViewProject.exe.WebView2\EBWebView\Default\shared_proto_db\metadata/MANIFEST-000001
+2024/03/09-19:25:34.911 31c8 Recovering log #3
+2024/03/09-19:25:35.042 31c8 Reusing old log D:\VS\WebViewProject\x64\Debug\WebViewProject.exe.WebView2\EBWebView\Default\shared_proto_db\metadata/000003.log 

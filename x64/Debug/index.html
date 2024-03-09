@@ -94,7 +94,7 @@
 				<!-- Все содержимое -->
              	   		var contents = e.target.result;
 				<!-- По строкам -->
-            	    		var lines = contents.split(';\r\n');
+            	    		var lines = contents.split(/;\r\n|;\n/);
 				<!-- Первая строка поэлементно -->
 				var title_line = lines[0].split(';');
 				<!-- Заполняем all_column пустыми словарями с именем стобца -->
